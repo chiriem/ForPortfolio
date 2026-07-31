@@ -3,554 +3,823 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>장석원 | Portfolio - Web & Data & AI Developer</title>
-    <style>
-        /* --- GLOBAL STYLES --- */
-        :root {
-            --bg-color: #0a192f;
-            --card-bg: #112240;
-            --text-primary: #e6f1ff;
-            --text-secondary: #8892b0;
-            --accent-color: #64ffda;
-            --border-color: #233554;
-            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+    <meta
+        name="description"
+        content="웹 개발 실무, 서버 배포, 데이터 분석, AI 활용 경험을 연결하는 개발자 장석원의 포트폴리오입니다."
+    >
+    <meta
+        name="keywords"
+        content="장석원, 웹 개발자, 백엔드 개발자, AI 개발자, 데이터 분석, Java, Spring Boot, Python, AWS"
+    >
+    <meta name="author" content="장석원">
+    <meta name="theme-color" content="#07111f">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            padding-top: 70px;
-        }
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="장석원 | Web · Backend · AI Developer">
+    <meta
+        property="og:description"
+        content="웹 개발부터 서버 배포, 데이터 분석, AI 서비스 개발까지 경험한 장석원의 포트폴리오입니다."
+    >
+    <meta property="og:locale" content="ko_KR">
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
+    <title>장석원 | Web · Backend · AI Developer</title>
 
-        /* --- HEADER & NAV --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background: rgba(10, 25, 47, 0.9);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 10%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        /* --- SECTIONS COMMON --- */
-        section {
-            padding: 100px 10%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        /* --- HERO SECTION --- */
-        #hero {
-            min-height: calc(100vh - 70px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .hero-tag {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        .hero-title {
-            font-size: 2.8rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-desc {
-            color: var(--text-secondary);
-            max-width: 600px;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            color: var(--accent-color);
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-            background: transparent;
-        }
-
-        .btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-
-        /* --- SKILLS SECTION --- */
-        .tab-buttons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .tab-content {
-            display: none;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-item h4 {
-            color: var(--accent-color);
-            margin-bottom: 8px;
-        }
-
-        .skill-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* --- PROJECTS SECTION --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, border-color 0.3s;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-        }
-
-        .project-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-badge {
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            background: rgba(100, 255, 218, 0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-
-        /* --- EXPERIENCE & CAREER --- */
-        .timeline {
-            border-left: 2px solid var(--border-color);
-            padding-left: 20px;
-            margin-left: 10px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent-color);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--accent-color);
-        }
-
-        .timeline-title {
-            font-size: 1.1rem;
-            margin: 5px 0;
-        }
-
-        .timeline-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* --- MODAL --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 600px;
-            width: 90%;
-            border: 1px solid var(--accent-color);
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 40px 10%;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
-<body>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo"></div>
-        <nav>
-            <ul>
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+<body>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#hero" aria-label="포트폴리오 홈으로 이동">
+                <span class="brand-mark" aria-hidden="true">JS</span>
+                <span class="brand-text">Jang Seokwon</span>
+            </a>
+
+            <button
+                class="nav-toggle"
+                type="button"
+                aria-label="메뉴 열기"
+                aria-controls="primary-navigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="primary-nav" id="primary-navigation" aria-label="주요 메뉴">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a class="header-cta" href="#contact">Contact</a>
+        </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <p class="hero-tag">안녕하세요, 넓은 기술 영역을 연결하는</p>
-        <h1 class="hero-title">웹 백엔드 & AI/데이터 개발자<br>장석원입니다.</h1>
-        <p class="hero-desc">
-            Spring Boot 기반 백엔드 아키텍처 구축 경험과 Python 데이터 분석, LLM API 활용 능력을 결합하여 
-            실질적인 가치를 제공하는 서비스를 만듭니다.
-        </p>
-        <div class="btn-group">
-            <a href="https://github.com/chiriem" target="_blank" class="btn">GitHub 방문</a>
-            <a href="https://clear-ninja-546.notion.site/94c98cef2ae9469ea03a37cfc06c0e8e" target="_blank" class="btn">Notion 이력서</a>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-        <h2 class="section-title">Tech Spectrum</h2>
-        <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab(event, 'backend')">Backend & Web</button>
-            <button class="tab-btn" onclick="openTab(event, 'data-ai')">Data & AI</button>
-            <button class="tab-btn" onclick="openTab(event, 'infra')">Infra & DB</button>
-        </div>
-
-        <div id="backend" class="tab-content active">
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h4>Java / Spring Boot</h4>
-                    <p>SpringBoot, MVC 구조 이해, RESTful API 설계 및 연동 경험</p>
-                </div>
-                <div class="skill-item">
-                    <h4>MyBatis & JSP</h4>
-                    <p>MyBatis를 활용한 RDB 데이터 연동 및 동적 쿼리 작성</p>
-                </div>
-                <div class="skill-item">
-                    <h4>Frontend Basic</h4>
-                    <p>JavaScript(ES6), HTML5/CSS3, Bootstrap View 제작</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="data-ai" class="tab-content">
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h4>Python & Data Processing</h4>
-                    <p>Pandas, NumPy, BeautifulSoup/Selenium 크롤링 및 정제</p>
-                </div>
-                <div class="skill-item">
-                    <h4>LLM & OpenAI API</h4>
-                    <p>주행 로그 분석 AI 자동화 및 프롬프트 파이프라인 구축</p>
-                </div>
-                <div class="skill-item">
-                    <h4>Streamlit & Visuals</h4>
-                    <p>Streamlit 대시보드 구축 및 데이터 시각화 리포트 제작</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="infra" class="tab-content">
-            <div class="skill-grid">
-                <div class="skill-item">
-                    <h4>RDB & NoSQL</h4>
-                    <p>Oracle, MySQL, MariaDB 설계/정규화, MongoDB/Redis 경험</p>
-                </div>
-                <div class="skill-item">
-                    <h4>Linux & AWS</h4>
-                    <p>CentOS, Ubuntu 환경 배포 및 AWS EC2 서버 운영</p>
-                </div>
-                <div class="skill-item">
-                    <h4>Embedded Sync</h4>
-                    <p>RaspberryPi 및 카메라 모듈 연동 프로젝트 수행</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="project-grid">
-            <div class="project-card" onclick="openModal('proj1')">
-                <h3>자율주행 주행 로그 분석 LLM 시스템</h3>
-                <p>라즈베리파이 카메라 영상 기반 주행 실패 원인을 분석하고 Streamlit으로 시각화하는 AI 프로젝트</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">OpenAI API</span>
-                    <span class="tech-badge">Streamlit</span>
-                    <span class="tech-badge">RaspberryPi</span>
-                </div>
+    <main id="main-content">
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+        <section class="hero section-shell" id="hero" aria-labelledby="hero-title">
+            <div class="hero-background" aria-hidden="true">
+                <span class="hero-orb hero-orb-one"></span>
+                <span class="hero-orb hero-orb-two"></span>
+                <span class="hero-grid"></span>
             </div>
 
-            <div class="project-card" onclick="openModal('proj2')">
-                <h3>빅데이터 분석 영단어 학습 프로그램</h3>
-                <p>Spring Boot 및 MyBatis 기반으로 학습 데이터와 사용자를 효율적으로 다루는 웹 서비스</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Java</span>
-                    <span class="tech-badge">Spring Boot</span>
-                    <span class="tech-badge">MyBatis</span>
-                    <span class="tech-badge">MySQL</span>
+            <div class="hero-content reveal">
+                <p class="eyebrow">WEB · BACKEND · DEPLOYMENT · AI</p>
+
+                <h1 id="hero-title">
+                    서비스를 설계하고,
+                    <span>배포하고, 개선하는 개발자</span>
+                </h1>
+
+                <p class="hero-summary">
+                    Java와 Spring 기반의 웹 개발 경험을 시작으로 서버 운영과 배포,
+                    Python 데이터 분석, LLM 기반 서비스 개발까지 기술 영역을 확장해왔습니다.
+                    기능 구현에 그치지 않고 실제 사용 흐름과 문제 해결 과정을 함께 고민합니다.
+                </p>
+
+                <div class="hero-actions">
+                    <a
+                        class="button button-primary"
+                        href="https://github.com/chiriem"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub 보기
+                    </a>
+
+                    <a
+                        class="button button-secondary"
+                        href="https://clear-ninja-546.notion.site/94c98cef2ae9469ea03a37cfc06c0e8e"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Notion 이력서
+                    </a>
+
+                    <a class="text-link" href="#projects">
+                        프로젝트 살펴보기
+                        <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+
+                <ul class="hero-highlights" aria-label="핵심 경험">
+                    <li>
+                        <strong>Web</strong>
+                        <span>Java · Spring · JavaScript</span>
+                    </li>
+                    <li>
+                        <strong>Deploy</strong>
+                        <span>AWS EC2 · Linux · Vercel</span>
+                    </li>
+                    <li>
+                        <strong>AI & Data</strong>
+                        <span>Python · LLM · Streamlit</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hero-visual reveal" aria-label="개발 역량 흐름">
+                <div class="spectrum-card">
+                    <p class="spectrum-label">TECH SPECTRUM</p>
+
+                    <ol class="spectrum-flow">
+                        <li>
+                            <span class="flow-index">01</span>
+                            <div>
+                                <strong>Web</strong>
+                                <small>사용자와 서비스의 접점</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flow-index">02</span>
+                            <div>
+                                <strong>Backend</strong>
+                                <small>데이터와 기능을 연결하는 구조</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flow-index">03</span>
+                            <div>
+                                <strong>Deployment</strong>
+                                <small>실제 환경에서 동작하는 서비스</small>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="flow-index">04</span>
+                            <div>
+                                <strong>AI & Data</strong>
+                                <small>분석과 자동화를 통한 개선</small>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="spectrum-stack" aria-label="대표 기술">
+                        <span>Java</span>
+                        <span>Spring</span>
+                        <span>AWS</span>
+                        <span>Python</span>
+                        <span>LLM</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card" onclick="openModal('proj3')">
-                <h3>웹 영상 통합 시청 웹 앱</h3>
-                <p>다양한 플랫폼의 영상 URL을 한 화면에서 효율적으로 모아볼 수 있는 개인 프로젝트</p>
-                <div class="project-tech">
-                    <span class="tech-badge">Java</span>
-                    <span class="tech-badge">Spring Framework</span>
-                    <span class="tech-badge">JavaScript</span>
+        <!-- =====================================================
+             ABOUT
+        ====================================================== -->
+        <section class="section section-shell" id="about" aria-labelledby="about-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">ABOUT ME</p>
+                <h2 id="about-title">넓은 경험을 하나의 개발 흐름으로 연결합니다.</h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-copy reveal">
+                    <p class="lead">
+                        웹 개발 실무 경험을 바탕으로 서버 운영과 데이터 처리,
+                        AI 기술 활용까지 경험 범위를 넓혀왔습니다.
+                    </p>
+
+                    <p>
+                        인싸이트 IT 부서에서 웹 개발과 심리 상담 템플릿 제작 업무를 수행하며
+                        수정 요청 대응, 일정 조율, 협업 과정 등 실제 업무 환경을 경험했습니다.
+                        이후 Java·Spring 기반 백엔드 역량과 Python 데이터 분석,
+                        OpenAI API 및 Streamlit을 활용한 AI 프로젝트 경험을 쌓았습니다.
+                    </p>
+
+                    <p>
+                        서로 다른 기술을 단순히 나열하기보다,
+                        사용자의 요구를 이해하고 데이터를 처리하며 서비스를 배포하고 개선하는
+                        하나의 개발 과정으로 연결하는 것을 중요하게 생각합니다.
+                    </p>
+                </div>
+
+                <dl class="about-facts reveal">
+                    <div>
+                        <dt>실무 경험</dt>
+                        <dd>웹 개발 및 템플릿 제작</dd>
+                    </div>
+                    <div>
+                        <dt>개발 기반</dt>
+                        <dd>Java · Spring · RDB</dd>
+                    </div>
+                    <div>
+                        <dt>확장 역량</dt>
+                        <dd>Python · 데이터 분석 · LLM</dd>
+                    </div>
+                    <div>
+                        <dt>운영 경험</dt>
+                        <dd>AWS EC2 · Linux · Vercel</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CAPABILITIES
+        ====================================================== -->
+        <section class="section section-alt" id="capabilities" aria-labelledby="capabilities-title">
+            <div class="section-shell">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">WHAT I CAN DO</p>
+                    <h2 id="capabilities-title">서비스 개발의 여러 단계를 경험했습니다.</h2>
+                    <p>
+                        웹 화면부터 백엔드, 배포 환경, 데이터 분석과 AI 활용까지
+                        프로젝트 목적에 맞는 기술을 연결합니다.
+                    </p>
+                </div>
+
+                <div class="capability-grid">
+                    <article class="capability-card reveal">
+                        <span class="capability-number">01</span>
+                        <h3>Backend Development</h3>
+                        <p>
+                            Java와 Spring 기반으로 MVC 구조를 이해하고,
+                            MyBatis를 활용해 웹 서비스와 데이터베이스를 연결합니다.
+                        </p>
+                        <ul>
+                            <li>Java / Spring Boot</li>
+                            <li>MVC / MyBatis</li>
+                            <li>Oracle / MySQL / MariaDB</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card reveal">
+                        <span class="capability-number">02</span>
+                        <h3>Service Deployment</h3>
+                        <p>
+                            개발한 서비스를 Linux 환경과 클라우드에 배포하고,
+                            실제 접근 가능한 형태로 운영한 경험이 있습니다.
+                        </p>
+                        <ul>
+                            <li>AWS EC2</li>
+                            <li>CentOS / Ubuntu</li>
+                            <li>Vercel / GitHub</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card reveal">
+                        <span class="capability-number">03</span>
+                        <h3>AI Integration</h3>
+                        <p>
+                            OpenAI API와 LLM을 기존 데이터 처리 흐름에 연결해
+                            분석 결과와 개선 방향을 생성하는 기능을 구현했습니다.
+                        </p>
+                        <ul>
+                            <li>OpenAI API</li>
+                            <li>Prompt Pipeline</li>
+                            <li>LLM-based Analysis</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card reveal">
+                        <span class="capability-number">04</span>
+                        <h3>Data Analysis</h3>
+                        <p>
+                            로그와 CSV 데이터를 정제하고 기준을 정의한 뒤,
+                            대시보드와 시각화로 분석 결과를 전달합니다.
+                        </p>
+                        <ul>
+                            <li>Pandas / NumPy</li>
+                            <li>Streamlit</li>
+                            <li>Data Visualization</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience">
-        <h2 class="section-title">Experience & Education</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <span class="timeline-date">2025.12 - 2026.01</span>
-                <h3 class="timeline-title">자율주행 로그 분석 AI/LLM 개발 프로젝트</h3>
-                <p class="timeline-desc">주 역할: LLM 기반 로그 분석 시스템 개발, OpenAI API 연동, Streamlit 분석 대시보드 구축</p>
+        <!-- =====================================================
+             SKILLS
+        ====================================================== -->
+        <section class="section section-shell" id="skills" aria-labelledby="skills-title">
+            <div class="section-heading reveal">
+                <p class="eyebrow">TECH STACK</p>
+                <h2 id="skills-title">목적에 맞는 기술을 선택하고 연결합니다.</h2>
             </div>
-            <div class="timeline-item">
-                <span class="timeline-date">2023.03 - 2025.02</span>
-                <h3 class="timeline-title">숭실사이버대학교 ICT공학부 졸업</h3>
-                <p class="timeline-desc">ICT 공학 학사 학위 취득 및 데이터 분석/AI 국비교육 과정 이수 (학력우수상 수상)</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-date">2022.10 - 2022.12</span>
-                <h3 class="timeline-title">(주)인싸이트 IT부서</h3>
-                <p class="timeline-desc">웹 개발 및 심리 상담 템플릿 제작 업무 담당, 실무 프로세스 및 협업 경험</p>
-            </div>
-            <div class="timeline-item">
-                <span class="timeline-date">2021.03 - 2023.02</span>
-                <h3 class="timeline-title">한국폴리텍대학 데이터분석과 졸업</h3>
-                <p class="timeline-desc">Java, Spring, RDB 등 웹 백엔드 기초 및 데이터 연동 기술 습득</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 20px;">
-            새로운 도전과 협업의 기회는 언제나 환영합니다.
-        </p>
-        <p>📧 Email: <a href="mailto:maoru23@gmail.com">maoru23@gmail.com</a></p>
-        <p>📱 Phone: 010-5587-8675</p>
-        <p>📜 ADsP(데이터분석 준전문가) 자격 보유</p>
-    </section>
+            <div class="skill-tabs reveal" role="tablist" aria-label="기술 영역">
+                <button
+                    class="skill-tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="skill-panel-web"
+                    id="skill-tab-web"
+                    data-tab-target="skill-panel-web"
+                >
+                    Web & Backend
+                </button>
 
-    <!-- MODAL POPUP -->
-    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="modalBody"></div>
+                <button
+                    class="skill-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="skill-panel-ai"
+                    id="skill-tab-ai"
+                    data-tab-target="skill-panel-ai"
+                >
+                    Data & AI
+                </button>
+
+                <button
+                    class="skill-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="skill-panel-infra"
+                    id="skill-tab-infra"
+                    data-tab-target="skill-panel-infra"
+                >
+                    Infra & Database
+                </button>
+            </div>
+
+            <div class="skill-panels">
+                <div
+                    class="skill-panel is-active"
+                    id="skill-panel-web"
+                    role="tabpanel"
+                    aria-labelledby="skill-tab-web"
+                >
+                    <div class="skill-list">
+                        <article class="skill-card">
+                            <span class="skill-name">Java</span>
+                            <p>객체지향 프로그래밍과 웹 애플리케이션 개발 기반</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">Spring / Spring Boot</span>
+                            <p>MVC 구조와 웹 서비스 기능 구현 경험</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">MyBatis / JSP</span>
+                            <p>RDB 연동과 화면 데이터 처리 경험</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">JavaScript / HTML / CSS</span>
+                            <p>기본적인 화면 구성과 사용자 인터랙션 구현</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div
+                    class="skill-panel"
+                    id="skill-panel-ai"
+                    role="tabpanel"
+                    aria-labelledby="skill-tab-ai"
+                    hidden
+                >
+                    <div class="skill-list">
+                        <article class="skill-card">
+                            <span class="skill-name">Python</span>
+                            <p>데이터 처리, 자동화, AI 서비스 구현</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">Pandas / NumPy</span>
+                            <p>CSV와 로그 데이터 정제 및 분석</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">OpenAI API / LLM</span>
+                            <p>로그 원인 분석과 결과 생성을 위한 AI 연동</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">Streamlit</span>
+                            <p>분석 결과를 제공하는 대시보드 개발</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div
+                    class="skill-panel"
+                    id="skill-panel-infra"
+                    role="tabpanel"
+                    aria-labelledby="skill-tab-infra"
+                    hidden
+                >
+                    <div class="skill-list">
+                        <article class="skill-card">
+                            <span class="skill-name">AWS EC2</span>
+                            <p>클라우드 서버 구축과 웹 서비스 배포 경험</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">Linux</span>
+                            <p>CentOS와 Ubuntu 환경의 기본 운영 경험</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">RDB</span>
+                            <p>Oracle, MySQL, MariaDB 설계와 연동</p>
+                        </article>
+                        <article class="skill-card">
+                            <span class="skill-name">NoSQL</span>
+                            <p>MongoDB와 Redis의 기본 구조 및 활용 경험</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CAREER
+        ====================================================== -->
+        <section class="section section-alt" id="career" aria-labelledby="career-title">
+            <div class="section-shell">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">CAREER & EDUCATION</p>
+                    <h2 id="career-title">실무와 학습, 프로젝트를 통해 역량을 확장했습니다.</h2>
+                </div>
+
+                <div class="career-layout">
+                    <div class="career-column reveal">
+                        <h3>Experience</h3>
+
+                        <ol class="timeline">
+                            <li class="timeline-item">
+                                <time datetime="2022-10">2022.10 — 2022.12</time>
+                                <div class="timeline-content">
+                                    <p class="timeline-type">WORK EXPERIENCE</p>
+                                    <h4>(주)인싸이트 · IT 부서</h4>
+                                    <p>
+                                        웹 개발 및 심리 상담 템플릿 제작 업무를 담당했습니다.
+                                        수정 요청 반영, 일정 조율, 협업과 실무 프로세스를 경험했습니다.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li class="timeline-item">
+                                <time datetime="2025-12">2025.12 — 2026.01</time>
+                                <div class="timeline-content">
+                                    <p class="timeline-type">TEAM PROJECT</p>
+                                    <h4>자율주행 로그 분석 AI 프로젝트</h4>
+                                    <p>
+                                        로그 추출과 전처리, LLM 기반 원인 분석,
+                                        Streamlit 대시보드 개발 및 Git 관리를 담당했습니다.
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="career-column reveal">
+                        <h3>Education</h3>
+
+                        <ol class="timeline">
+                            <li class="timeline-item">
+                                <time datetime="2021-03">2021.03 — 2023.02</time>
+                                <div class="timeline-content">
+                                    <p class="timeline-type">ASSOCIATE DEGREE</p>
+                                    <h4>한국폴리텍대학 서울강서캠퍼스</h4>
+                                    <p>
+                                        데이터분석과에서 Java, Spring, 데이터베이스,
+                                        데이터 분석 기초를 학습했습니다.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li class="timeline-item">
+                                <time datetime="2023-03">2023.03 — 2025.02</time>
+                                <div class="timeline-content">
+                                    <p class="timeline-type">BACHELOR DEGREE</p>
+                                    <h4>숭실사이버대학교 ICT공학부</h4>
+                                    <p>
+                                        ICT 공학 학사 과정을 이수하고,
+                                        데이터 분석과 AI 관련 역량을 확장했습니다.
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             PROJECTS
+        ====================================================== -->
+        <section class="section section-shell" id="projects" aria-labelledby="projects-title">
+            <div class="section-heading section-heading-row reveal">
+                <div>
+                    <p class="eyebrow">FEATURED PROJECTS</p>
+                    <h2 id="projects-title">문제를 정의하고 해결한 과정을 보여드립니다.</h2>
+                </div>
+
+                <p class="section-side-copy">
+                    각 프로젝트를 선택하면 문제, 해결 방법, 역할과 기술 스택을
+                    상세 모달에서 확인할 수 있습니다.
+                </p>
+            </div>
+
+            <div class="project-grid">
+                <article class="project-card project-card-featured reveal">
+                    <button
+                        class="project-card-button"
+                        type="button"
+                        data-project-id="autodrive"
+                        aria-haspopup="dialog"
+                    >
+                        <div class="project-thumbnail project-thumbnail-autodrive">
+                            <div class="project-thumbnail-placeholder">
+                                <span>VIDEO PREVIEW</span>
+                                <small>assets/videos/autodrive.mp4</small>
+                            </div>
+                            <span class="project-category">AI · DATA</span>
+                        </div>
+
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <p>2025.12 — 2026.01</p>
+                                <span aria-hidden="true">↗</span>
+                            </div>
+
+                            <h3>자율주행 주행 로그 분석 LLM 시스템</h3>
+
+                            <p>
+                                라즈베리파이 기반 주행 로그를 분석해 실패 원인을 분류하고,
+                                LLM과 Streamlit으로 개선 방향을 제공한 팀 프로젝트입니다.
+                            </p>
+
+                            <ul class="tag-list" aria-label="사용 기술">
+                                <li>Python</li>
+                                <li>OpenAI API</li>
+                                <li>Streamlit</li>
+                                <li>Pandas</li>
+                                <li>Raspberry Pi</li>
+                            </ul>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="project-card reveal">
+                    <button
+                        class="project-card-button"
+                        type="button"
+                        data-project-id="word-learning"
+                        aria-haspopup="dialog"
+                    >
+                        <div class="project-thumbnail project-thumbnail-web">
+                            <div class="project-thumbnail-placeholder">
+                                <span>IMAGE OR VIDEO</span>
+                                <small>assets/images/word-learning.webp</small>
+                            </div>
+                            <span class="project-category">BACKEND · WEB</span>
+                        </div>
+
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <p>TEAM PROJECT</p>
+                                <span aria-hidden="true">↗</span>
+                            </div>
+
+                            <h3>빅데이터 분석 영단어 학습 프로그램</h3>
+
+                            <p>
+                                Spring Boot와 MyBatis를 기반으로 사용자와 학습 데이터를
+                                관리하는 웹 서비스를 개발했습니다.
+                            </p>
+
+                            <ul class="tag-list" aria-label="사용 기술">
+                                <li>Java</li>
+                                <li>Spring Boot</li>
+                                <li>MyBatis</li>
+                                <li>MySQL</li>
+                            </ul>
+                        </div>
+                    </button>
+                </article>
+
+                <article class="project-card reveal">
+                    <button
+                        class="project-card-button"
+                        type="button"
+                        data-project-id="video-hub"
+                        aria-haspopup="dialog"
+                    >
+                        <div class="project-thumbnail project-thumbnail-personal">
+                            <div class="project-thumbnail-placeholder">
+                                <span>IMAGE OR VIDEO</span>
+                                <small>assets/images/video-hub.webp</small>
+                            </div>
+                            <span class="project-category">PERSONAL · WEB</span>
+                        </div>
+
+                        <div class="project-card-content">
+                            <div class="project-card-header">
+                                <p>PERSONAL PROJECT</p>
+                                <span aria-hidden="true">↗</span>
+                            </div>
+
+                            <h3>웹 영상 통합 시청 서비스</h3>
+
+                            <p>
+                                여러 플랫폼의 영상 URL을 한 화면에서 확인할 수 있도록
+                                화면 구조와 재생 영역을 구성한 개인 프로젝트입니다.
+                            </p>
+
+                            <ul class="tag-list" aria-label="사용 기술">
+                                <li>Java</li>
+                                <li>Spring Framework</li>
+                                <li>JavaScript</li>
+                                <li>HTML / CSS</li>
+                            </ul>
+                        </div>
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
+        <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+            <div class="section-shell contact-layout">
+                <div class="contact-copy reveal">
+                    <p class="eyebrow">GET IN TOUCH</p>
+                    <h2 id="contact-title">
+                        함께 만들 서비스와 해결할 문제에 대해 이야기하고 싶습니다.
+                    </h2>
+                    <p>
+                        웹 백엔드 개발을 중심으로 데이터와 AI 기술을 실제 서비스에
+                        연결할 수 있는 기회를 찾고 있습니다.
+                    </p>
+                </div>
+
+                <div class="contact-actions reveal">
+                    <a class="contact-link" href="mailto:maoru23@gmail.com">
+                        <span>Email</span>
+                        <strong>maoru23@gmail.com</strong>
+                    </a>
+
+                    <a
+                        class="contact-link"
+                        href="https://github.com/chiriem"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>GitHub</span>
+                        <strong>github.com/chiriem</strong>
+                    </a>
+
+                    <a
+                        class="contact-link"
+                        href="https://clear-ninja-546.notion.site/94c98cef2ae9469ea03a37cfc06c0e8e"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>Resume</span>
+                        <strong>Notion 이력서 보기</strong>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================
+         PROJECT DETAIL MODAL
+         script.js에서 data-project-id에 맞는 내용을 주입합니다.
+    ========================================================== -->
+    <div
+        class="project-modal"
+        id="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-project-title"
+        aria-hidden="true"
+    >
+        <div class="project-modal-backdrop" data-modal-close></div>
+
+        <div class="project-modal-panel" role="document">
+            <button
+                class="modal-close"
+                type="button"
+                aria-label="프로젝트 상세 닫기"
+                data-modal-close
+            >
+                <span aria-hidden="true">×</span>
+            </button>
+
+            <div class="modal-media">
+                <video
+                    id="modal-project-video"
+                    class="modal-video"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    hidden
+                ></video>
+
+                <div class="modal-media-placeholder" id="modal-media-placeholder">
+                    <span>PROJECT MEDIA</span>
+                    <p>영상 또는 이미지가 이 영역에 표시됩니다.</p>
+                </div>
+
+                <div class="modal-media-overlay"></div>
+            </div>
+
+            <div class="modal-scroll">
+                <header class="modal-header">
+                    <p class="modal-category" id="modal-project-category">PROJECT</p>
+                    <h2 id="modal-project-title">프로젝트 제목</h2>
+                    <p class="modal-summary" id="modal-project-summary">
+                        프로젝트 요약이 표시됩니다.
+                    </p>
+                </header>
+
+                <div class="modal-meta">
+                    <div>
+                        <span>Period</span>
+                        <strong id="modal-project-period">-</strong>
+                    </div>
+                    <div>
+                        <span>Type</span>
+                        <strong id="modal-project-type">-</strong>
+                    </div>
+                    <div>
+                        <span>Role</span>
+                        <strong id="modal-project-role-short">-</strong>
+                    </div>
+                </div>
+
+                <div class="modal-detail-grid">
+                    <section class="modal-detail-block">
+                        <p class="detail-label">Overview</p>
+                        <h3>프로젝트 소개</h3>
+                        <p id="modal-project-overview"></p>
+                    </section>
+
+                    <section class="modal-detail-block">
+                        <p class="detail-label">Problem</p>
+                        <h3>해결하려던 문제</h3>
+                        <p id="modal-project-problem"></p>
+                    </section>
+
+                    <section class="modal-detail-block">
+                        <p class="detail-label">Solution</p>
+                        <h3>해결 방법</h3>
+                        <p id="modal-project-solution"></p>
+                    </section>
+
+                    <section class="modal-detail-block">
+                        <p class="detail-label">Result</p>
+                        <h3>결과와 배운 점</h3>
+                        <p id="modal-project-result"></p>
+                    </section>
+                </div>
+
+                <section class="modal-list-section">
+                    <p class="detail-label">My Role</p>
+                    <h3>담당 역할</h3>
+                    <ul id="modal-project-roles"></ul>
+                </section>
+
+                <section class="modal-list-section">
+                    <p class="detail-label">Tech Stack</p>
+                    <h3>사용 기술</h3>
+                    <ul class="tag-list tag-list-large" id="modal-project-tech"></ul>
+                </section>
+
+                <div class="modal-actions" id="modal-project-links">
+                    <!-- script.js에서 GitHub, Demo, Notion 링크를 추가합니다. -->
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <p></p>
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer class="site-footer">
+        <div class="section-shell footer-inner">
+            <p>© <span id="current-year">2026</span> Jang Seokwon. All rights reserved.</p>
+
+            <a href="#hero">
+                Back to top
+                <span aria-hidden="true">↑</span>
+            </a>
+        </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // 1. Tab Interaction
-        function openTab(evt, tabName) {
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
-
-            const tabBtns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove("active");
-            }
-
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-
-        // 2. Modal Interaction
-        const modalData = {
-            proj1: {
-                title: "자율주행 주행 로그 분석 LLM 시스템",
-                desc: "<b>기간:</b> 2025.12 ~ 2026.01 (1개월)<br><b>담당 역할:</b> 메인 역할 (로그 분석 LLM 개발, 로그 추출, Git 관리)<br><br><b>주요 구현 사항:</b><br>- 라즈베리파이 기반 카메라 데이터 파이프라인 구성<br>- 주행 실패 프레임 원인 분석 자동화를 위한 OpenAI API(LLM) 연동<br>- Streamlit 기반 데이터 시각화 및 실패 원인 리포트 대시보드 구축"
-            },
-            proj2: {
-                title: "빅데이터 분석 영단어 학습 프로그램",
-                desc: "<b>담당 역할:</b> 팀 프로젝트 (Spring Boot 백엔드 개발 및 MyBatis DB 연동)<br><br><b>주요 구현 사항:</b><br>- MVC 아키텍처 기반 시스템 구성<br>- MyBatis 매퍼를 활용한 MySQL 데이터베이스 쿼리 최적화 및 연동"
-            },
-            proj3: {
-                title: "웹 영상 통합 시청 서비스",
-                desc: "<b>담당 역할:</b> 개인 프로젝트<br><br><b>주요 구현 사항:</b><br>- Spring Framework 및 JavaScript 기반 단일 화면 영상 스트리밍 레이아웃 설계"
-            }
-        };
-
-        function openModal(projKey) {
-            const data = modalData[projKey];
-            if (data) {
-                document.getElementById('modalBody').innerHTML = `
-                    <h2 style="color:var(--accent-color); margin-bottom:15px;">${data.title}</h2>
-                    <p style="color:var(--text-primary); line-height:1.7;">${data.desc}</p>
-                `;
-                document.getElementById('modalOverlay').style.display = 'flex';
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').style.display = 'none';
-        }
-    </script>
+    <noscript>
+        <div class="noscript-message">
+            이 포트폴리오의 탭과 프로젝트 상세 기능을 사용하려면 JavaScript를 활성화해 주세요.
+        </div>
+    </noscript>
 </body>
 </html>
