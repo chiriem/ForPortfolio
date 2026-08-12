@@ -1610,13 +1610,21 @@ video {
 .modal-media {
     position: relative;
     display: grid;
-    min-height: min(42vh, 430px);
+    min-height: min(32vh, 300px);
     place-items: center;
     overflow: hidden;
     background:
         radial-gradient(circle at 25% 20%, rgba(98, 169, 255, 0.2), transparent 38%),
         radial-gradient(circle at 85% 80%, rgba(101, 245, 207, 0.16), transparent 40%),
         #091525;
+}
+
+.modal-image {
+    width: 100%;
+    height: min(36vh, 26rem);
+    object-fit: contain;
+    object-position: center;
+    background: #07111f;
 }
 
 .modal-video {

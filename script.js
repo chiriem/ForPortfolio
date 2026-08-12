@@ -445,18 +445,18 @@ const PROJECT_DATA = {
         category: "AI · DATA",
         title: "자율주행 주행 로그 분석 LLM 시스템",
         summary:
-            "라즈베리파이 기반 자율주행 로그를 분석하고, 실패 원인과 개선 방향을 제공하는 LLM 기반 분석 시스템입니다.",
+            "라즈베리파이 기반 자율주행 로그를 분석하고, 실패 원인과 개선 방향을 제공하는 LLM 기반 분석 시스템",
         period: "2025.12 — 2026.01",
         type: "Team Project",
         roleShort: "LLM · Log Analysis · Git",
         overview:
-            "카메라 기반 자율주행 과정에서 생성된 로그를 수집하고 분석하여, 주행 실패 프레임의 원인을 확인할 수 있도록 구성한 프로젝트입니다. 분석 결과는 Streamlit 대시보드에서 시각적으로 확인할 수 있도록 구현했습니다.",
+            "카메라 기반 자율주행 과정에서 생성된 로그를 수집하고 분석하여, 주행 실패 프레임의 원인을 확인할 수 있도록 구성한 프로젝트. 분석 결과는 Streamlit 대시보드에서 시각적으로 확인할 수 있도록 구현함",
         problem:
-            "초기 로그는 형식이 일정하지 않았고 단순 수치 출력 중심이라 실패 원인을 판단하기 어려웠습니다. 분석 기준도 명확하지 않아 동일한 로그에 대한 해석이 달라질 수 있었습니다.",
+            "초기 로그는 형식이 일정하지 않았고 단순 수치 출력 중심에 분석 기준도 명확하지 않아 실패 원인을 판단하는데 난항이 있었음",
         solution:
-            "로그 데이터 구조를 정리하고 실패 조건을 재정의했습니다. 이후 Pandas 기반 전처리와 시각화를 적용하고, OpenAI API를 연동해 실패 원인과 개선 방향을 생성하는 분석 흐름을 구성했습니다.",
+            "로그 데이터 구조를 정리하고 실패 조건을 재정의. 이후 Pandas 기반 전처리와 시각화를 적용하고, OpenAI API를 연동해 실패 원인과 개선 방향을 생성하는 분석 흐름을 재구성",
         result:
-            "팀원이 로그 전체를 직접 확인하지 않아도 주요 실패 구간과 원인을 빠르게 검토할 수 있는 분석 화면을 구현했습니다. 이 과정에서 데이터 기준 정의와 전처리가 LLM 응답 품질보다 먼저 해결되어야 한다는 점을 배웠습니다.",
+            "팀원이 로그 전체를 직접 확인하지 않아도 주요 실패 구간과 원인을 빠르게 검토할 수 있는 분석 화면을 구현. 이 과정에서 데이터 기준 정의와 전처리가 LLM 응답 품질보다 먼저 해결되어야 한다고 학습함",
         roles: [
             "주행 로그 추출 및 CSV 데이터 구조 정리",
             "실패 조건과 분석 기준 재정의",
@@ -475,6 +475,7 @@ const PROJECT_DATA = {
             "Git",
         ],
         video: "./assets/videos/autodrive.mp4",
+        image: null,
         links: [
             {
                 label: "Project Notion",
@@ -518,6 +519,7 @@ const PROJECT_DATA = {
             "Redis"
         ],
         video: null,
+        image: "./assets/images/word-learning.png",
         links: [
             {
                 label: "GitHub",
@@ -557,6 +559,7 @@ const PROJECT_DATA = {
             "Pandas",
         ],
         video: "./assets/videos/quote2u.mp4",
+        image: null,
         links: [
             {
                 label: "GitHub",
@@ -605,6 +608,7 @@ function initializeProjectModal() {
         tech: document.getElementById("modal-project-tech"),
         links: document.getElementById("modal-project-links"),
         video: document.getElementById("modal-project-video"),
+        image: document.getElementById("modal-project-image"),
         placeholder: document.getElementById("modal-media-placeholder"),
     };
 
@@ -658,35 +662,44 @@ function initializeProjectModal() {
         elements.links.hidden = elements.links.childElementCount === 0;
     };
 
-    const renderVideo = (videoPath) => {
-        if (!elements.video || !elements.placeholder) {
+    const renderMedia = (videoPath, imagePath) => {
+        if (!elements.video || !elements.image || !elements.placeholder) {
             return;
         }
 
+        // 초기화
         elements.video.pause();
         elements.video.removeAttribute("src");
         elements.video.load();
         elements.video.hidden = true;
+
+        elements.image.removeAttribute("src");
+        elements.image.hidden = true;
+
         elements.placeholder.hidden = false;
 
-        if (!videoPath) {
+        // 영상이 있으면 영상 우선
+        if (videoPath) {
+            elements.video.src = videoPath;
+            elements.video.hidden = false;
+            elements.placeholder.hidden = true;
+
+            const playPromise = elements.video.play();
+
+            if (playPromise && typeof playPromise.catch === "function") {
+                playPromise.catch(() => {
+                    elements.video.controls = true;
+                });
+            }
+
             return;
         }
 
-        elements.video.src = videoPath;
-        elements.video.hidden = false;
-        elements.placeholder.hidden = true;
-
-        const playPromise = elements.video.play();
-
-        if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(() => {
-                /**
-                 * 브라우저 자동 재생 정책으로 재생이 거부되면
-                 * 영상 자체는 표시하고 사용자가 직접 재생할 수 있게 합니다.
-                 */
-                elements.video.controls = true;
-            });
+        // 영상이 없고 이미지가 있으면 이미지 표시
+        if (imagePath) {
+            elements.image.src = imagePath;
+            elements.image.hidden = false;
+            elements.placeholder.hidden = true;
         }
     };
 
@@ -705,7 +718,7 @@ function initializeProjectModal() {
         replaceListItems(elements.roles, project.roles);
         replaceListItems(elements.tech, project.tech);
         renderLinks(project.links);
-        renderVideo(project.video);
+        renderMedia(project.video, project.image);
     };
 
     const getFocusableElements = () => {
