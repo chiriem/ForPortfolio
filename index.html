@@ -37,9 +37,8 @@
     ========================================================== -->
     <header class="site-header" id="site-header">
         <div class="header-inner">
-            <a class="brand" href="#hero" aria-label="포트폴리오 홈으로 이동">
-                <span class="brand-mark" aria-hidden="true">JS</span>
-                <span class="brand-text">Jang Seokwon</span>
+            <a class="brand" href="index.html" aria-label="포트폴리오 홈으로 이동">
+                <span class="brand-text">장석원 소개페이지</span>
             </a>
 
             <button
@@ -61,11 +60,9 @@
                     <li><a href="#skills">기술 스택</a></li>
                     <li><a href="#career">경력</a></li>
                     <li><a href="#projects">프로젝트</a></li>
-                    <li><a href="#contact">연락처</a></li>
+                    <li><a href="#contact" style="color: greenyellow;">연락처</a></li>
                 </ul>
             </nav>
-
-            <a class="header-cta" href="#contact">연락하기</a>
         </div>
     </header>
 
@@ -541,10 +538,7 @@
                         aria-haspopup="dialog"
                     >
                         <div class="project-thumbnail project-thumbnail-autodrive">
-                            <div class="project-thumbnail-placeholder">
-                                <span>VIDEO PREVIEW</span>
-                                <small>assets/videos/autodrive.mp4</small>
-                            </div>
+                            <img class="project-thumbnail-image" src="./assets/images/autodrive.png" alt="자율주행 차량 주행 화면">
                             <span class="project-category">AI · DATA</span>
                         </div>
 
@@ -614,14 +608,11 @@
                     <button
                         class="project-card-button"
                         type="button"
-                        data-project-id="video-hub"
+                        data-project-id="quote2u"
                         aria-haspopup="dialog"
                     >
-                        <div class="project-thumbnail project-thumbnail-personal">
-                            <div class="project-thumbnail-placeholder">
-                                <span>IMAGE OR VIDEO</span>
-                                <small>assets/images/video-hub.webp</small>
-                            </div>
+                        <div class="project-thumbnail project-thumbnail-quote2u">
+                            <img class="project-thumbnail-image" src="./assets/images/quote2u.png" alt="명언 조언 초미니프로젝트">
                             <span class="project-category">PERSONAL · WEB</span>
                         </div>
 
@@ -631,11 +622,12 @@
                                 <span aria-hidden="true">↗</span>
                             </div>
 
-                            <h3>웹 영상 통합 시청 서비스</h3>
+                            <h3>Quote2U</h3>
 
                             <p>
-                                여러 플랫폼의 영상 URL을 한 화면에서 확인할 수 있도록
-                                화면 구조와 재생 영역을 구성한 개인 프로젝트입니다.
+                                사용자의 현재 상황을 입력하면
+                                명언 2개와 조언 2개를 제공하는
+                                경량 RAG 기반 웹 서비스
                             </p>
 
                             <ul class="tag-list" aria-label="사용 기술">

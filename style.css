@@ -1293,10 +1293,19 @@ video {
 }
 
 .project-thumbnail-autodrive {
-    background:
-        radial-gradient(circle at 18% 15%, rgba(98, 169, 255, 0.24), transparent 38%),
-        radial-gradient(circle at 84% 82%, rgba(101, 245, 207, 0.2), transparent 42%),
-        linear-gradient(145deg, #091828, #0b2031);
+    height: 320px;
+    min-height: 0;
+}
+
+.project-thumbnail-autodrive .project-thumbnail-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 75%;
 }
 
 .project-thumbnail-web {

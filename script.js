@@ -474,7 +474,7 @@ const PROJECT_DATA = {
             "Raspberry Pi",
             "Git",
         ],
-        video: null,
+        video: "./assets/videos/autodrive.mp4",
         links: [
             {
                 label: "Project Notion",
@@ -521,37 +521,43 @@ const PROJECT_DATA = {
         links: [],
     },
 
-    "video-hub": {
-        category: "PERSONAL · WEB",
-        title: "웹 영상 통합 시청 서비스",
+    quote2u: {
+        category: "AI · WEB",
+        title: "Quote2U",
         summary:
-            "여러 웹 영상 URL을 하나의 화면에서 확인할 수 있도록 구성한 개인 웹 프로젝트입니다.",
+            "사용자의 감정, 상황을 분석해 관련 카테고리의 명언을 검색하고 조언하는 웹 서비스",
         period: "Personal Project",
-        type: "Web Application",
-        roleShort: "Planning · Web Development",
+        type: "LLM Web Service",
+        roleShort: "Planning · RAG · Prompt Design",
         overview:
-            "여러 플랫폼의 영상 링크를 각각 이동해 확인해야 하는 불편을 줄이기 위해, 영상 URL을 한 화면에 모아볼 수 있도록 구성한 개인 프로젝트입니다.",
+            "사용자가 현재 기분이나 상황을 입력하면 관련 명언 2개와 조언 2개를 제공하는 개인 프로젝트",
         problem:
-            "서로 다른 사이트의 영상을 확인하려면 여러 탭과 페이지를 반복적으로 이동해야 했습니다. 영상 영역이 많아질수록 화면 구성과 사용 흐름도 복잡해지는 문제가 있었습니다.",
+            "단순 LLM 생성만으로는 사용자의 상황과 연관된 명언을 안정적으로 제공하기 어렵고, 명언 검색과 조언 생성을 분리할 필요가 있었음",
         solution:
-            "영상 입력과 재생 영역을 하나의 화면 흐름으로 구성하고, Spring Framework와 JavaScript를 활용해 사용자가 여러 영상을 효율적으로 확인할 수 있는 레이아웃을 설계했습니다.",
+            "한국어 키워드를 규칙 기반으로 API Ninjas 카테고리에 매핑하고, 해당 카테고리의 명언을 가져온 뒤 OpenAI API에 사용자 입력과 함께 전달",
         result:
-            "개인 아이디어를 웹 서비스 구조로 구체화하고 화면과 서버 기능을 직접 연결했습니다. 사용자 입장에서 필요한 기능과 화면 배치를 먼저 생각하는 경험을 얻었습니다.",
+            "명언 검색과 LLM 생성을 분리해 관련 명언을 근거로 조언을 생성하는 흐름을 구현",
         roles: [
-            "서비스 아이디어 및 화면 구조 기획",
-            "Spring Framework 기반 웹 기능 구현",
-            "JavaScript를 활용한 화면 인터랙션 구성",
-            "영상 재생 영역과 레이아웃 설계",
+            "명언 데이터 정제 및 카테고리 구성",
+            "사용자 입력 기반 임베딩 검색 흐름 설계",
+            "ChromDB 기반 명언 검색 구조 구현",
+            "OpenAI API 프롬프트 및 출력 형식 설계",
+            "Streamlit UI 구현"
         ],
         tech: [
-            "Java",
-            "Spring Framework",
-            "JavaScript",
-            "HTML",
-            "CSS",
+            "Python",
+            "Streamlit",
+            "OpenAI API",
+            "API Ninjas",
+            "Pandas",
         ],
-        video: null,
-        links: [],
+        video: "./assets/videos/quote2u.mp4",
+        links: [
+            {
+                label: "GitHub",
+                url: "https://github.com/chiriem/Quote2U"
+            }
+        ]
     },
 };
 
