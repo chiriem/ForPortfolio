@@ -1308,6 +1308,25 @@ video {
     object-position: center 75%;
 }
 
+.project-thumbnail-quote2u {
+    aspect-ratio: 1672 / 941;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-thumbnail-quote2u .project-thumbnail-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
 .project-thumbnail-web {
     background:
         radial-gradient(circle at 20% 20%, rgba(159, 122, 234, 0.2), transparent 38%),

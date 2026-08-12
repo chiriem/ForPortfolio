@@ -489,20 +489,20 @@ const PROJECT_DATA = {
 
     "word-learning": {
         category: "BACKEND · WEB",
-        title: "빅데이터 분석 영단어 학습 프로그램",
+        title: "영단어 학습 웹 프로그램",
         summary:
-            "Spring Boot와 MyBatis를 기반으로 사용자와 학습 데이터를 관리하는 팀 웹 프로젝트입니다.",
+            "Spring을 기반으로 사용자와 학습 데이터를 관리하는 팀 웹 프로젝트",
         period: "Team Project",
         type: "Backend Web Service",
         roleShort: "Backend · Database",
         overview:
-            "영단어 학습 데이터를 웹에서 조회하고 관리할 수 있도록 구현한 팀 프로젝트입니다. Spring Boot 기반 서버 구조와 MyBatis를 활용한 데이터베이스 연동을 중심으로 개발했습니다.",
+            "음성 인식을 활용해 단어와 문장을 학습하고, 사용자가 직접 퀴즈를 생성·관리할 수 있도록 구현한 Spring 기반 웹 프로젝트",
         problem:
-            "사용자 정보와 학습 데이터를 안정적으로 저장하고 화면 기능과 연결할 수 있는 백엔드 구조가 필요했습니다. 팀 단위 개발이므로 기능과 데이터 흐름을 명확하게 나누는 것도 중요했습니다.",
+            "단순 암기 방식의 단어 학습보다 사용자가 직접 발음하고 결과를 확인할 수 있는 학습 방식이 필요했음. 또한 사용자별 퀴즈와 학습 결과를 저장하고 관리할 수 있는 구조도 필요했음",
         solution:
-            "MVC 구조를 기준으로 기능을 분리하고, MyBatis 매퍼를 사용해 데이터 조회와 저장 로직을 구성했습니다. 데이터베이스 테이블과 화면 기능 사이의 흐름을 정리해 팀원들이 기능을 연결할 수 있도록 했습니다.",
+            "Spring MVC 기반으로 회원과 퀴즈 기능을 구성하고 MongoDB에 사용자 및 퀴즈 데이터를 저장. 브라우저 음성 인식 라이브러리를 활용해 사용자의 발음을 텍스트로 변환하고 문제와 비교하도록 구현",
         result:
-            "Spring Boot 프로젝트 구조와 MyBatis 기반 데이터 접근 방식을 실제 팀 프로젝트에서 적용했습니다. 화면 기능만 구현하는 것이 아니라 데이터 구조와 백엔드 흐름을 함께 설계하는 경험을 쌓았습니다.",
+            "Spring Boot 프로젝트 구조와 MyBatis 기반 데이터 접근 방식을 실제 팀 프로젝트에서 적용했습니다. 화면 기능만 구현하는 사용자가 퀴즈를 직접 생성하고 음성으로 문제를 풀 수 있는 학습 흐름을 구현했으며, 학습 결과를 점수화해 저장하고 사용자 랭킹으로 확인할 수 있도록 구성 아니라 데이터 구조와 백엔드 흐름을 함께 설계하는 경험을 쌓았습니다.",
         roles: [
             "Spring Boot 기반 백엔드 기능 구현",
             "MyBatis 매퍼와 SQL 작성",
@@ -511,14 +511,19 @@ const PROJECT_DATA = {
         ],
         tech: [
             "Java",
-            "Spring Boot",
             "Spring MVC",
-            "MyBatis",
             "JSP",
-            "MySQL",
+            "MongoDB",
+            "JavaScript",
+            "Redis"
         ],
         video: null,
-        links: [],
+        links: [
+            {
+                label: "GitHub",
+                url: "https://github.com/chiriem/SeeSpeech"
+            }
+        ],
     },
 
     quote2u: {
